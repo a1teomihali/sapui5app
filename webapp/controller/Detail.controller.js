@@ -11,10 +11,10 @@ sap.ui.define([
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.getRoute("detail").attachMatched(this._onRouteMatched, this);
             },
+
             _onRouteMatched: function (oEvent) {
-                var oArgs, oView;
-                oArgs = oEvent.getParameter("arguments");
-                oView = this.getView();
+                var oArgs = oEvent.getParameter("arguments");
+                var oView = this.getView();
                 oView.bindElement({
                     path: "/Products(" + oArgs.productId + ")",
                     events: {
@@ -43,7 +43,6 @@ sap.ui.define([
                             // notify user
                             var successMsg = bundle.getText("OrderDialogSuccessMsg");
                             MessageToast.show(successMsg);
-                            // TODO call proper service method and update model (not part of this tutorial)
                         }
                     },
                     bundle.getText("OrderDialogTitle")
